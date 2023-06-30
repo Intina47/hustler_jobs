@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Job Listings</title>
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- css -->
+    <link rel="stylesheet" href="/css/style.css">
+
+</head>
+<body>
+    <div class="container">
+        <!-- job listing and search bar in the same row -->
+        <div class="row">
+            <div class="col-md-8">
+              <h1 class="mb-4" style="display: inline-block;">Job Listings</h1>
+            </div>
+            <span>
+                <input type="text" placeholder="Search" style="width: 200px; height: 30px; border-radius: 5px; border: 1px solid #ccc; padding: 5px 10px; margin-left: 10px;">
+                <i class="search-icon fa-solid fa-search"></i>
+            </span>
+          </div>
+
+        <div class="toggle-container">
+            <span class="toggle-label">Dark Mode</span>
+            <label class="toggle">
+                <input class="toggle-checkbox" type="checkbox" id="darkModeToggle">
+                <span class="toggle-icon" id="toggleIcon"><i class="fa-solid fa-moon"></i></span>
+            </label>
+        </div>
+
+        <div id="jobListings"></div>
+    </div>
+    <script>
+        //load jobs from jobs.json
+        fetch('./jobs')
+  .then(function (response) {
+    return response.json();
+  })
+  .then(function (jobs) {
+    displayJobs(jobs);
+  });
+
+  function displayJobs(jobs) {
+    var jobListingsContainer = document.getElementById('jobListings');
+    jobs.forEach(function (job) {
+      var jobListing = document.createElement('div');
+      jobListing.className = 'job-listing';
+  
+      var jobTitle = document.createElement('div');
+      jobTitle.className = 'job-title';
+      jobTitle.textContent = job.title;
+  
+      var jobLink = document.createElement('a');
+      jobLink.className = 'job-link';
+      jobLink.textContent = 'View Details';
+      jobLink.addEventListener('click', function() {
+        fetch(`/pdf/${encodeURIComponent(job.file_name)}`)
+          .then(function(response) {
+            return response.blob();
+          })
+          .then(function(blob) {
+            // Create a temporary URL for the blob object
+            var fileUrl = URL.createObjectURL(blob);
+            // Open the file in a new tab/window
+            window.open(fileUrl);
+          });
+      });
+  
+      jobListing.appendChild(jobTitle);
+      jobListing.appendChild(jobLink);
+  
+      jobListingsContainer.appendChild(jobListing);
+    });
+  }
+  
+
+
+
+
+                // Toggle dark mode
+        var darkModeToggle = document.getElementById('darkModeToggle');
+        var toggleIcon = document.getElementById('toggleIcon');
+
+        darkModeToggle.addEventListener('change', function () {
+            if (this.checked) {
+                document.body.classList.add('dark-mode');
+                toggleIcon.innerHTML = '<i class="fa-solid fa-moon"></i>'; // Moon icon
+            } else {
+                document.body.classList.remove('dark-mode');
+                toggleIcon.innerHTML = '<i class="fa-solid fa-moon"></i>'; // Sun icon
+            }
+        });
+    </script>
+</body>
+</html>

@@ -80,42 +80,6 @@ function displayJobs(jobs) {
   });
 }
 
-  // function displayJobs(jobs) {
-  //   var jobListingsContainer = document.getElementById('jobListings');
-  //   jobs.forEach(function (job) {
-  //     var jobListing = document.createElement('div');
-  //     jobListing.className = 'job-listing';
-  
-  //     var jobTitle = document.createElement('div');
-  //     jobTitle.className = 'job-title';
-  //     jobTitle.textContent = job.title;
-  
-  //     var jobLink = document.createElement('a');
-  //     jobLink.className = 'job-link';
-  //     jobLink.textContent = 'View Details';
-  //     jobLink.addEventListener('click', function() {
-  //       fetch(`/pdf/${encodeURIComponent(job.file_name)}`)
-  //         .then(function(response) {
-  //           return response.blob();
-  //         })
-  //         .then(function(blob) {
-  //           // Create a temporary URL for the blob object
-  //           var fileUrl = URL.createObjectURL(blob);
-  //           // Open the file in a new tab/window
-  //           window.open(fileUrl);
-  //         });
-  //     });
-  
-  //     jobListing.appendChild(jobTitle);
-  //     jobListing.appendChild(jobLink);
-  
-  //     jobListingsContainer.appendChild(jobListing);
-  //   });
-  // }
-  
-
-
-
 
                 // Toggle dark mode
         var darkModeToggle = document.getElementById('darkModeToggle');

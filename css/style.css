@@ -22,9 +22,26 @@ body {
 }
 
 .container {
+  position: relative;
     max-width: 800px;
     margin: 0 auto;
     padding: 20px;
+}
+  .header {
+    position: sticky;
+    top: 0;
+    z-index: 300;
+   
+}
+#searchinput{
+  width: 100%; 
+  height: 30px; 
+  border-radius: 5px; 
+  border: 1px solid #ccc; 
+  padding: 5px 10px; 
+  margin-left: 10px; 
+  font-size: 20px;
+  margin-bottom: 10px;
 }
 .row {
     display: flex;
@@ -51,11 +68,7 @@ body {
     padding: 5px 10px;
     margin-left: 10px;
   }
-  /* #searchInput{
-    position: sticky;
-    top: 0;
-    z-index: 999;
-  } */
+
   
   .search-icon {
     position: relative;
@@ -72,10 +85,7 @@ body {
     top: 10px;
     z-index: 200; /* Adjust the z-index as needed */
 }
-.sticky.sticky-background {
-  background-color: rgba(29, 155, 240, 0.5); /* Replace with your desired background color and opacity */
-  backdrop-filter: blur(10px);
-}
+
   
 .job-listing {
     background-color: var(--cards-bg-color);
@@ -99,7 +109,7 @@ body {
 
 .toggle-container {
     text-align: right;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 .toggle-label {
@@ -134,38 +144,34 @@ body {
   
 }
 
-   .search-bar {
-    display: flex;
-    align-items: center;
-    margin-left: 0px;
-    background-color: aqua;
-  }
-
   .sticky {
     position: sticky;
     top: 0.1px;
     width: 100%;
-    z-index: 999;
-    background-color: transparent;
+    z-index: 1;
+    /* background-color: transparent; */
+    background-color: rgba(29, 155, 240, 0.7);
+    backdrop-filter: blur(10px);
     transition: background-color 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   }
   
   .sticky::before {
     content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(29, 155, 240, 0.7);
-    backdrop-filter: blur(10px);
-    z-index: -1;
+  position: absolute;
+  top: -5px;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background-color: rgba(29, 155, 240, 0.7);
+  z-index: 1;
+  box-shadow: 0 4px 8px rgba(29, 155, 240, 0.7);
   }
   
   .sticky.sticky-background {
     background-color: rgba(29, 155, 240, 0.7);
   }  
-    
+
 .toggle-container{
   text-align: end;
   margin-right: 36px;

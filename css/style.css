@@ -4,6 +4,7 @@
     --hover-color: rgb(29, 155, 240);
     --text-color: rgb(29, 30, 32);
     --cards-bg-color:rgb(255, 255, 255);
+    --icon-bg-color:rgb(29, 30, 32);
   }
   /* Dark mode styles */
 body.dark-mode {
@@ -31,12 +32,18 @@ body {
     display: flex;
     align-items: center;
   }
-  
+  .about{
+    color: var(--text-color);
+  }
+  .search_icon{
+    color: var(--text-color);
+    margin-left: 10px;
+  }
   .search-bar {
     display: flex;
     align-items: center;
+    margin-left: auto;
   }
-  
   .search-input {
     width: 200px;
     height: 30px;
@@ -51,16 +58,21 @@ body {
     top: auto;
     left: -25px;
     cursor: pointer;
+    color: var(--icon-bg-color)
   }
   .search-icon:hover{
     color: var(--hover-color);
   }
+  .sticky {
+    position: sticky;
+    top: 0px;
+    z-index: 200; /* Adjust the z-index as needed */
+}
+.sticky.sticky-background {
+  background-color: rgba(29, 155, 240, 0.5); /* Replace with your desired background color and opacity */
+  backdrop-filter: blur(10px);
+}
   
-.search-bar {
-    margin-left: auto; /* Move the search bar to the right */
-  }
-
-
 .job-listing {
     background-color: var(--cards-bg-color);
     margin-bottom: 20px;
@@ -99,4 +111,58 @@ body {
 .toggle-icon {
     font-size: 24px;
     cursor: pointer;
+}
+@media screen and (max-width:475px){
+  body {
+       font-family: Arial, sans-serif;
+       margin: 0;
+       padding: 0;
+       background-color: var(--bg-color);
+       color: var(--text-color);
+       transition: background-color 0.3s ease, color 0.3s ease;
+   }
+   .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    overflow-x: hidden;
+}
+   .about{
+    display: flex;
+    font-size: medium;
+   }
+   .search-bar {
+    display: flex;
+    align-items: center;
+    margin-left: 0px;
+    background-color: aqua;
+  }
+  .sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 999;
+    /* Add other styles as needed */
+}
+  .job-title {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+.search-input {
+  width: 100px;
+  height: 10px;
+  border-radius: 5px;
+  border: 19px solid #a03333;
+  padding: 5px 10px;
+  margin-left: 10px;
+}
+.job-listing {
+  background-color: var(--cards-bg-color);
+  margin-bottom: 20px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  overflow-x: hidden;
+}
+
 }

@@ -20,17 +20,13 @@ app.use('/css', express.static(__dirname + '/css'));
 
 // assets folder
 app.use('/assets', express.static(__dirname + '/assets'));
+app.use('/src', express.static(__dirname + '/src'));
 
 // jobs endpoint json file 
 const jobs = require('./assets/jobs.json');
 app.get('/jobs', (req, res) => {
     res.json(jobs);
 });
-// app.get('/jobs', (req, res) => {
-//     const jobs = require('./assets/jobs.json');
-  
-//     res.render('jobs', { jobs });
-//   });
   
 // View details endpoint
 app.get('/pdf/:fileName', (req, res) => {
@@ -42,6 +38,24 @@ app.get('/pdf/:fileName', (req, res) => {
   
     // Send the PDF file
     res.sendFile(filePath);
+  });
+
+//   search
+app.get('/search', (req, res) => {
+    const jobs = require('./assets/jobs.json');
+  
+    const searchQuery = req.query.title; // Get the search query from the request query parameters
+    
+    // Perform search logic based on the search query
+    // This can involve filtering the jobs array based on the title
+    
+    let searchResults = jobs; // Initialize with all jobs if no search query is provided
+    
+    if (searchQuery) {
+      searchResults = jobs.filter(job => job.title.toLowerCase().includes(searchQuery.toLowerCase()));
+    }
+  
+    res.json(searchResults); // Return the search results as JSON to the client
   });
   
 

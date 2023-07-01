@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Job Listing</title>
+  <link rel="stylesheet" href="/css/search.css">
+   <!-- font awesome -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+  <nav class="navbar">
+    <div class="navbar-left">
+      <a href="/" style="text-decoration: none;">
+        <h1 class="about mb-4" style="display: flex;">Job Listings</h1>
+      </a>
+    </div>
+    <div class="navbar-right">
+      <div id="sticky-container" class="sticky">
+        <div class="toggle-container">
+            <span class="toggle-label">Dark Mode</span>
+            <label class="toggle">
+                <input class="toggle-checkbox" type="checkbox" id="darkModeToggle">
+                <span class="toggle-icon" id="toggleIcon"><i class="fa-solid fa-moon"></i></span>
+            </label>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="search-bar">
+      <input id="searchInput" type="text" placeholder="Search jobs">
+      <button type="submit">Search</button>
+    </div>
+  </section>
+
+  <div class="search-results">
+    <!-- Display search results here -->
+  </div>
+
+  <script src="src/search.js"></script>
+</body>
+
+</html>

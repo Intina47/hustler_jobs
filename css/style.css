@@ -51,6 +51,11 @@ body {
     padding: 5px 10px;
     margin-left: 10px;
   }
+  /* #searchInput{
+    position: sticky;
+    top: 0;
+    z-index: 999;
+  } */
   
   .search-icon {
     position: relative;
@@ -64,7 +69,7 @@ body {
   }
   .sticky {
     position: sticky;
-    top: 0px;
+    top: 10px;
     z-index: 200; /* Adjust the z-index as needed */
 }
 .sticky.sticky-background {

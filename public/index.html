@@ -3,7 +3,7 @@
 <head>
    <!-- meta -->
    <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>Job Listings</title>
     <!-- font awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -22,11 +22,11 @@
                 <h1 class="about mb-4" style="display: flex;">Job Listings</h1>
               </a>
             </div>
-            <span>
-                <!-- <a href="">
-                  <i class="fa-solid fa-magnifying-glass search_icon"></i>
-                </a> -->
-            </span>
+          </div>
+          
+          <div class="row">
+                <input id="searchInput" type="text" placeholder="Search" style="width: 100%; height: 30px; border-radius: 5px; border: 1px solid #ccc; padding: 5px 10px; margin-left: 10px; font-size: 20px;">
+                <i type="submit" class="search-icon fa-solid fa-search"></i>
           </div>
 
           <div id="sticky-container" class="sticky">
@@ -144,6 +144,7 @@ function displayJobs(jobs) {
 
       
     </script>
+    <script src="src/search.js"></script>
 
 </body>
 </html>

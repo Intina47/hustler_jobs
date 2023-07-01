@@ -13,7 +13,7 @@ searchInput.addEventListener('input', function() {
 });
 
 function displaySearchResults(searchResults) {
-  var searchResultsContainer = document.getElementById('searchResultsContainer');
+  var searchResultsContainer = document.getElementById('jobListings');
   searchResultsContainer.innerHTML = '';
 
   if (searchResults.length > 0) {

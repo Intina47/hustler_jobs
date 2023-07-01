@@ -13,8 +13,6 @@ body.dark-mode {
     --cards-bg-color:rgb(46, 46, 51);
 }
 body {
- /*light mode: <!-- rgb(255, 255, 255); -->*/
- /*dark mode: rgb(29, 30, 32);*/
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
@@ -34,6 +32,7 @@ body {
   }
   .about{
     color: var(--text-color);
+    font-size: 37px;
   }
   .search_icon{
     color: var(--text-color);
@@ -122,27 +121,50 @@ body {
        transition: background-color 0.3s ease, color 0.3s ease;
    }
    .container {
+    position: relative;
     max-width: 800px;
     margin: 0 auto;
     padding: 20px;
-    overflow-x: hidden;
+  }
+  
 }
-   .about{
-    display: flex;
-    font-size: medium;
-   }
+
    .search-bar {
     display: flex;
     align-items: center;
     margin-left: 0px;
     background-color: aqua;
   }
+
   .sticky {
-    position: fixed;
-    top: 0;
+    position: sticky;
+    top: 0.1px;
     width: 100%;
     z-index: 999;
-    /* Add other styles as needed */
+    background-color: transparent;
+    transition: background-color 0.3s ease;
+  }
+  
+  .sticky::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(29, 155, 240, 0.7);
+    backdrop-filter: blur(10px);
+    z-index: -1;
+  }
+  
+  .sticky.sticky-background {
+    background-color: rgba(29, 155, 240, 0.7);
+  }  
+    
+.toggle-container{
+  text-align: end;
+  margin-right: 36px;
+  margin-top: 21px;
 }
   .job-title {
     font-size: 16px;
@@ -163,6 +185,4 @@ body {
   padding: 20px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   overflow-x: hidden;
-}
-
 }

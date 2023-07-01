@@ -25,8 +25,26 @@ function displaySearchResults(searchResults) {
       jobTitle.className = 'job-title';
       jobTitle.textContent = job.title;
 
-      jobListing.appendChild(jobTitle);
-      searchResultsContainer.appendChild(jobListing);
+      var jobLink = document.createElement('a');
+    jobLink.className = 'job-link';
+    jobLink.textContent = 'View Details';
+    jobLink.addEventListener('click', function() {
+      fetch(`/pdf/${encodeURIComponent(job.file_name)}`)
+        .then(function(response) {
+          return response.blob();
+        })
+        .then(function(blob) {
+          // Create a temporary URL for the blob object
+          var fileUrl = URL.createObjectURL(blob);
+          // Open the file in a new tab/window
+          window.open(fileUrl);
+        });
+    });
+
+    jobListing.appendChild(jobTitle);
+    jobListing.appendChild(jobLink);
+
+    searchResultsContainer.appendChild(jobListing);
     });
   } else {
     var noResultsMessage = document.createElement('div');

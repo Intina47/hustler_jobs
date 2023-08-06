@@ -6,34 +6,45 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Job Listing</title>
   <link rel="stylesheet" href="/css/search.css">
+   <!-- font awesome -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- css -->
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/stickybits/3.7.6/stickybits.min.js"></script>
 </head>
 
 <body>
   <nav class="navbar">
     <div class="navbar-left">
-      <h1 class="site-name">Job Listing</h1>
+      <a href="/" style="text-decoration: none;">
+        <h1 class="about mb-4" style="display: flex;">Job Listings</h1>
+      </a>
     </div>
     <div class="navbar-right">
-      <label class="toggle">
-        <input class="toggle-checkbox" type="checkbox" id="darkModeToggle">
-        <span class="toggle-icon"></span>
-        <span class="toggle-label">Dark Mode</span>
-      </label>
+      <div id="sticky-container" class="sticky">
+        <div class="toggle-container">
+            <span class="toggle-label">Dark Mode</span>
+            <label class="toggle">
+                <input class="toggle-checkbox" type="checkbox" id="darkModeToggle">
+                <span class="toggle-icon" id="toggleIcon"><i class="fa-solid fa-moon"></i></span>
+            </label>
+        </div>
+      </div>
     </div>
   </nav>
 
   <section class="hero">
     <div class="search-bar">
-      <input type="text" placeholder="Search jobs">
+      <input id="searchInput" type="text" placeholder="Search jobs">
       <button type="submit">Search</button>
     </div>
   </section>
 
   <div class="search-results">
-    <!-- Display search results here -->
+    <div id="searchResultsContainer"></div>
   </div>
 
-  <script src="script.js"></script>
+  <script src="src/search.js"></script>
 </body>
 
 </html>

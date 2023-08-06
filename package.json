@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon index.js"
+    "dev": "nodemon index.js",
+    "build": "webpack --config webpack.config.js"
   },
   "keywords": [],
   "author": "",
@@ -13,7 +14,13 @@
   "dependencies": {
     "body-parser": "^1.20.2",
     "express": "^4.18.2",
-    "nodemon": "^2.0.22",
-    "path": "^0.12.7"
+    "html-webpack-plugin": "^5.5.3",
+    "nodemon": "^1.14.9",
+    "path": "^0.12.7",
+    "Webpack": "npm:webpack@^5.88.1"
+  },
+  "devDependencies": {
+    "webpack": "^5.88.1",
+    "webpack-cli": "^5.1.4"
   }
 }

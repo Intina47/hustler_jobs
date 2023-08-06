@@ -20,17 +20,15 @@ app.use('/css', express.static(__dirname + '/css'));
 
 // assets folder
 app.use('/assets', express.static(__dirname + '/assets'));
+// src folder javascript
+app.use('/src', express.static(__dirname + '/src'));
+
 
 // jobs endpoint json file 
 const jobs = require('./assets/jobs.json');
 app.get('/jobs', (req, res) => {
     res.json(jobs);
 });
-// app.get('/jobs', (req, res) => {
-//     const jobs = require('./assets/jobs.json');
-  
-//     res.render('jobs', { jobs });
-//   });
   
 // View details endpoint
 app.get('/pdf/:fileName', (req, res) => {

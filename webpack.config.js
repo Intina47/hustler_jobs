@@ -56,7 +56,7 @@ module.exports = {
       "http": false,
       "net": false,
       "querystring": false,
-      "url": true,
+      "url": false,
       "path": false,
       "buffer": false,
       "os": false,

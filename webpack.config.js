@@ -1,15 +1,38 @@
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 
 module.exports = {
   entry: './src/index.js',
   output: {
-    filename:'[name].[contenthash].bundle.js',
+    filename:'[name].bundle.js',
     path: path.resolve(__dirname, 'dist'),
     clean: true,
-    // publicPath: '/',
   },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template:"./public/index.html",
+      filename: 'public/index.html',
+    }),
+    new HtmlWebpackPlugin({
+      template:"./public/search.html",
+      filename: 'public/search.html',
+    }),
+    new CopyWebpackPlugin({
+      patterns: [
+        {
+          from: 'css', // Source directory
+          to: 'css',   // Destination directory in 'dist'
+        },
+      ],
+    }),
+
+    new MiniCssExtractPlugin({
+      filename: '[name].css'
+    })
+  ],
   
   module: {
     rules: [
@@ -29,23 +52,6 @@ module.exports = {
       }
     ]
   },
-  plugins:[
-    // new HtmlWebpackPlugin({
-    //   template: './public/index.html',
-    //   filename: './index.html',
-    //   title: 'Webpack 5 Boilerplate',
-    //   meta: {
-    //     viewport: 'width=device-width, initial-scale=1.0',
-    //     description:'meta tag for SEO'
-    //   }
-    // }),
-    new MiniCssExtractPlugin(),
-    // new CopyPlugin({
-    //   patterns: [
-    //     { from: './public/assets', to: 'assets' },
-    //   ],
-    // }),
-  ],
  
   resolve: {
     fallback: {
@@ -61,6 +67,8 @@ module.exports = {
       "buffer": false,
       "os": false,
       "assert": false,
+      "async_hooks": false
+
     }
   },
   devServer: {

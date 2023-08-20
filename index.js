@@ -6,6 +6,7 @@ const path = require('path');
 const fs = require('fs');
 
 app.use(express.static(path.join(__dirname, 'public')));
+// app.use(express.static(path.join(__dirname, 'dist')));
 
 // jobs endpoint json file 
 const jobs = require('./public/assets/jobs.json');
@@ -13,7 +14,9 @@ const jobs = require('./public/assets/jobs.json');
 // get all the job posts from the json files and send them to client side
 app.get('/jobs', (req, res) => {
   console.log("______________traffic......")
-    res.json(jobs);
+  res.setHeader('Content-Type', 'application/json');
+  // res.sendFile(path.join(__dirname, 'dist', 'assets', 'jobs.json'));
+  res.json(jobs);
 });
 // View details endpoint
 app.get('/pdf/:fileName', (req, res) => {

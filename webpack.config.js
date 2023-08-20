@@ -5,7 +5,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   entry: {
-    main: './index.js' // Update this entry point accordingly
+    main: './index.js'
   },
   output: {
     filename: '[name].bundle.js',
@@ -15,11 +15,11 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: "./public/index.html",
-      filename: 'index.html', // No need to specify the 'public' directory here
+      filename: 'index.html', 
     }),
     new HtmlWebpackPlugin({
       template: "./public/search.html",
-      filename: 'search.html', // No need to specify the 'public' directory here
+      filename: 'search.html', 
     }),
     new CopyWebpackPlugin({
       patterns: [

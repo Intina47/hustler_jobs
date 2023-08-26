@@ -43,22 +43,33 @@
         <div id="jobListings"></div>
     </div>
     <script>
+      //load more button
+const loadMoreButton = document.createElement('button');
+loadMoreButton.textContent = 'Load More';
+loadMoreButton.classList.add('load-more-button');
+loadMoreButton.addEventListener('click', function() {
+  fetchJobs(currentPage + 1);
+});
         //load jobs from jobs.json
-        fetch('./jobs')
-  .then(function (response) {
-    return response.json();
-  })
-  .then(function (jobs) {
-    displayJobs(jobs);
-  });
+        let currentPage = 1;
+        function fetchJobs(page){
+          fetch(`/jobs?page=${page}`)
+          .then(function(response){
+            return response.json();
+          })
+          .then(function(jobsData){
+            displayJobs(jobsData.jobs);
+            currentPage = jobsData.currentPage;
 
-  fetch('./jobs')
-  .then(function(response) {
-    return response.json();
-  })
-  .then(function(jobs) {
-    displayJobs(jobs);
-  });
+            if (currentPage >= jobsData.totalPages) {
+              loadMoreButton.style.display = 'none';
+            }else{
+              loadMoreButton.style.display = 'block';
+            }
+          });
+        }
+//fetch the initial page of jobs
+fetchJobs(currentPage);
 
 function displayJobs(jobs) {
   var jobListingsContainer = document.getElementById('jobListings');
@@ -79,6 +90,8 @@ function displayJobs(jobs) {
     jobListing.appendChild(jobLink);
 
     jobListingsContainer.appendChild(jobListing);
+    //append "load more" button to the page
+document.getElementById("jobListings").appendChild(loadMoreButton);
   });
 }
 

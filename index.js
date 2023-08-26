@@ -8,11 +8,33 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // jobs endpoint json file 
 const jobs = require('./public/assets/jobs.json');
+let lastJobIndexSent = -1; //indicates no jobs have been sent
 
 app.get('/jobs', (req, res) => {
-  console.log("______________traffic......")
-  res.setHeader('Content-Type', 'application/json');
-  res.json(jobs);
+  // parse query parameters
+  const page = parseInt(req.query.page) || 1;
+  const perPage = 10;
+
+  // calculate the start and the end index for the current page
+  const startIndex = lastJobIndexSent + 1;
+  const endIndex = startIndex + perPage - 1;
+
+  if(startIndex >= jobs.length){
+    return res.status(200).json({jobs: [], currentPage: page, totalPages: 0});
+  }
+
+  //slice the jobs array to get the jobs for the current page
+  const jobsForPage = jobs.slice(startIndex, Math.min(endIndex, jobs.length - 1));
+  lastJobIndexSent = endIndex;
+
+  // prepare response data
+  const responseData = {
+    jobs: jobsForPage,
+    currentPage: page,
+    totalPages: Math.ceil(jobs.length / perPage)
+  };
+  res.setHeader('Content-Type', 'appplication/json');
+  res.json(responseData);
 });
 // View details endpoint
 app.get('/pdf/:fileName', (req, res) => {

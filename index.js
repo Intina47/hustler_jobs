@@ -1,4 +1,3 @@
-// express
 const express = require('express');
 const app = express();
 const port = 3000;
@@ -10,16 +9,16 @@ app.use(express.static(path.join(__dirname, 'public')));
 // jobs endpoint json file 
 const jobs = require('./public/assets/jobs.json');
 
-// get all the job posts from the json files and send them to client side
 app.get('/jobs', (req, res) => {
   console.log("______________traffic......")
-    res.json(jobs);
+  res.setHeader('Content-Type', 'application/json');
+  res.json(jobs);
 });
 // View details endpoint
 app.get('/pdf/:fileName', (req, res) => {
   console << "System Request!"
     const fileName = req.params.fileName;
-    const filePath = path.join(__dirname, '..', 'assets', 'pdf_files', fileName);
+    const filePath = path.join(__dirname, '..','assets', 'pdf_files', fileName);
     fs.stat(filePath, function(err){
       if (err == null) {
         console.log('File exists');

@@ -57,7 +57,16 @@ loadMoreButton.addEventListener('click', function() {
           .then(function(response){
             return response.json();
           })
+          //if error
+          .catch(function(error){
+            console.log('Sorry an error occured\n',error);
+          })
+          //if success
           .then(function(jobsData){
+            if (jobsData.length === 0) {
+              loadMoreButton.style.display = 'none';
+              return;
+            }
             displayJobs(jobsData.jobs);
             currentPage = jobsData.currentPage;
 

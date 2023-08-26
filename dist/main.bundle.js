@@ -25075,19 +25075,39 @@ var port = 3000;
 var path = __webpack_require__(2520);
 var fs = __webpack_require__(5174);
 app.use(express["static"](path.join(__dirname, 'public')));
-// app.use(express.static(path.join(__dirname, 'dist')));
 
 // jobs endpoint json file 
 var jobs = __webpack_require__(5764);
+var lastJobIndexSent = -1; //indicates no jobs have been sent
 
-// const jobs = require('./assets/jobs.json'); 
-
-// get all the job posts from the json files and send them to client side
 app.get('/jobs', function (req, res) {
-  console.log("______________traffic......");
-  res.setHeader('Content-Type', 'application/json');
-  // res.sendFile(path.join(__dirname, 'dist', 'assets', 'jobs.json'));
-  res.json(jobs);
+  // parse query parameters
+  var page = parseInt(req.query.page) || 1;
+  var perPage = 10;
+
+  // calculate the start and the end index for the current page
+  var startIndex = lastJobIndexSent + 1;
+  var endIndex = startIndex + perPage - 1;
+  if (startIndex >= jobs.length) {
+    return res.status(200).json({
+      jobs: [],
+      currentPage: page,
+      totalPages: 0
+    });
+  }
+
+  //slice the jobs array to get the jobs for the current page
+  var jobsForPage = jobs.slice(startIndex, Math.min(endIndex, jobs.length - 1));
+  lastJobIndexSent = endIndex;
+
+  // prepare response data
+  var responseData = {
+    jobs: jobsForPage,
+    currentPage: page,
+    totalPages: Math.ceil(jobs.length / perPage)
+  };
+  res.setHeader('Content-Type', 'appplication/json');
+  res.json(responseData);
 });
 // View details endpoint
 app.get('/pdf/:fileName', function (req, res) {

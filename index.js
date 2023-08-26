@@ -27,20 +27,27 @@ app.get('/jobs', (req, res) => {
   const jobsForPage = jobs.slice(startIndex, Math.min(endIndex, jobs.length - 1));
   lastJobIndexSent = endIndex;
 
-  // prepare response data
-  const responseData = {
-    jobs: jobsForPage,
-    currentPage: page,
-    totalPages: Math.ceil(jobs.length / perPage)
-  };
-  res.setHeader('Content-Type', 'appplication/json');
-  res.json(responseData);
+  // prepare response data and send error code if an error occurs
+  try{
+    const responseData = {
+      jobs: jobsForPage,
+      currentPage: page,
+      totalPages: Math.ceil(jobs.length / perPage)
+    };
+    res.setHeader('Content-Type', 'appplication/json');
+    res.json(responseData);
+  }
+  catch(err){
+    console.log('An error occured accessing jobs', err);
+    res.status(500).json({message: err.message});
+  }
+
 });
 // View details endpoint
 app.get('/pdf/:fileName', (req, res) => {
   console << "System Request!"
     const fileName = req.params.fileName;
-    const filePath = path.join(__dirname, '..','assets', 'pdf_files', fileName);
+    const filePath = path.join(__dirname, 'public','assets', 'pdf_files', fileName);
     fs.stat(filePath, function(err){
       if (err == null) {
         console.log('File exists');
@@ -50,7 +57,7 @@ app.get('/pdf/:fileName', (req, res) => {
         console.log("------------------Loading file--------------: ", filePath);
         res.sendFile(filePath);
       } else if (err.code === 'ENOENT') {
-        console.log('File does not exist');
+        console.log(fileName, ' does not exist');
         res.status(404).send('File not found');
       } else {
         console.log('Some other error: ', err.code);

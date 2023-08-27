@@ -24,28 +24,45 @@
           </div>
           <div class="header">
             
-          <div id="sticky-container" class="sticky">
-            <div class="toggle-container">
-                <span class="toggle-label">Dark Mode</span>
-                <label class="toggle">
+            <div id="sticky-container" class="sticky">
+              <div class="company-toggle-container">
+                <div class="company-name">Jobs in kenya</div>
+                <div class="toggle-container">
+                  <label class="toggle">
+                    <span class="toggle-label">Dark Mode</span>
                     <input class="toggle-checkbox" type="checkbox" id="darkModeToggle">
                     <span class="toggle-icon" id="toggleIcon"><i class="fa-solid fa-moon"></i></span>
-                </label>
+                  </label>
+                </div>
+              </div>
             </div>
-          </div>
-  
+            
           <div class="row">
                 <input id="searchInput" type="text" placeholder="Search" style="width: 100%; height: 30px; border-radius: 5px; border: 1px solid #ccc; padding: 5px 10px; margin-left: 10px; font-size: 20px;">
                 <i type="submit" class="search-icon fa-solid fa-search"></i>
           </div>
 
+          <!-- location tags eg kenya, UK  rounded buttons-->
+          <div class="row location_tags_section">
+            <div class="col-md-12">
+              <div class="location-tags">
+                <button class="location-tag" id="254">Jobs in kenya</button>
+                <button class="location-tag" id="44">United Kingdom</button>
+                </div>
+            </div>
+          </div>
+
+
         </div>
         <div id="jobListings"></div>
+        <div id="uk-jobListings"></div>
     </div>
     
     <script src="/src/search.js"></script>
-    <script src="/src/client-sideScript.js"></script>
+    <script src="/src/client-keJobsDisplay.js"></script>
     <script src="/src/darkMode.js"></script>
+    <script src="/src/locationTag.js"></script>
+    <script src="/src/jobsDisplay.js"></script>
 
 </body>
 </html>

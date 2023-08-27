@@ -1,3 +1,4 @@
+import sys
 import requests
 from bs4 import BeautifulSoup
 from urllib.parse import urlencode
@@ -43,16 +44,36 @@ def scrape_jobs(job_title, location):
         print("Failed to fetch data")
         return []
 
+
+if len(sys.argv) == 3:
+    job_title = sys.argv[1]
+    location = sys.argv[2]
+    jobs = scrape_jobs(job_title, location)
+    for job in jobs:
+    
+        print("Title:", job["title"])
+        print("Date:", job["date"])
+        print("Company and Location:", job["company_location"])
+        print("Salary:", job["salary"])
+        print("Description:", job["description"])
+        print("=" * 40)
+    # with open('jobs.json', 'w') as file:
+    #     file.write(str(jobs))
+else:
+    print("Please provide job title and location as arguments")
+
+
+
 # Example usage
-job_title = "software developer"
-location = "Edinburgh, Scotland"
-jobs = scrape_jobs(job_title, location)
+# job_title = "software developer"
+# location = "Edinburgh, Scotland"
+# jobs = scrape_jobs(job_title, location)
 
 # Print job listings
-for job in jobs:
-    print("Title:", job["title"])
-    print("Date:", job["date"])
-    print("Company and Location:", job["company_location"])
-    print("Salary:", job["salary"])
-    print("Description:", job["description"])
-    print("=" * 40)
+# for job in jobs:
+#     print("Title:", job["title"])
+#     print("Date:", job["date"])
+#     print("Company and Location:", job["company_location"])
+#     print("Salary:", job["salary"])
+#     print("Description:", job["description"])
+#     print("=" * 40)

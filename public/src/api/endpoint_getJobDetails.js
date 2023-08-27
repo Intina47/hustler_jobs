@@ -1,9 +1,9 @@
 const path = require('path');
 const fs = require('fs');
 const getJobDetails = (req, res) => {
-    console << "System Request!"
+  console.log("System Request!");
     const fileName = req.params.fileName;
-    const filePath = path.join(__dirname, '..','assets', 'pdf_files', fileName);
+    const filePath = path.join(__dirname, '..', '..', 'assets', 'pdf_files', fileName);
     fs.stat(filePath, function(err){
       if (err == null) {
         console.log('File exists');

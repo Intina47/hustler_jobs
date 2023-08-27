@@ -68,7 +68,7 @@ body {
     padding: 5px 10px;
     margin-left: 10px;
   }
-
+  
   .search-icon {
     position: relative;
     top: auto;
@@ -87,12 +87,8 @@ body {
 .company-toggle-container {
   display: flex;
   align-items: center;
-  justify-content: space-between; /* Distribute content along the horizontal axis */
-}
-
-.company-toggle-container {
-  display: flex; /* Display the company name and toggle container in a flex layout */
-  align-items: center; /* Vertically align items in the center */
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
 }
 
 .company-name {

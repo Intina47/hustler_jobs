@@ -1,4 +1,4 @@
-// Client-side code
+// kenyan jobs search 
 var searchInput = document.getElementById('searchInput');
 
 searchInput.addEventListener('input', function() {

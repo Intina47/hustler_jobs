@@ -1,4 +1,4 @@
-const searchPdfKE = (jobs) => (req,res) => {
+const Search_jobs_Ke = (jobs) => (req,res) => {
     console.log("Search underway..")
     const searchQuery = req.query.title; // Get the search query from the request query parameters
     let searchResults = jobs; // Initialize with all jobs if no search query is provided
@@ -8,4 +8,4 @@ const searchPdfKE = (jobs) => (req,res) => {
     console.log("SEARCH successfull")
     res.json(searchResults); // Return the search results as JSON to the client
 }
-module.exports = { searchPdfKE };
+module.exports = { Search_jobs_Ke };

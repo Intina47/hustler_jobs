@@ -1,3 +1,4 @@
+// display the jobs divs conditionally (kenyan div and uk div)
 document.addEventListener("DOMContentLoaded", function() {
     const kenyanJoblistingsDiv = document.getElementById("jobListings");
     const ukJoblistingsDiv = document.getElementById("uk-jobListings");

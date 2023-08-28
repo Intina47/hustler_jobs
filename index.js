@@ -20,7 +20,9 @@ app.use('/search', searchPdfRouter)
 
 app.get('/ukJobs', (req, res) => {
     const jobTitle = req.query.jobTitle;
-    const location = req.query.location;
+    const location = 'United Kingdom';
+    console.log("JOBTITTLE: ", jobTitle);
+    console.log("LOCATION: ", location);
 
     const pythonProcess = spawn('python', ['./scrapper/ukJobs.py', jobTitle, location]);
     let scrapedData = '';

@@ -1,5 +1,5 @@
 // kenyan jobs search 
-var searchInput = document.getElementById('searchInput');
+var searchInput = document.getElementById('searchKE');
 
 searchInput.addEventListener('input', function() {
   var searchQuery = searchInput.value;

@@ -27,5 +27,4 @@ app.get('/search', searchPdfKE(jobs))
 // start the express server
 app.listen(port, () => {
     console.log(`server started at http://localhost:${port}`);
-}
-);
+});

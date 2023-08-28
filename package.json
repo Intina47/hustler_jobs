@@ -21,6 +21,7 @@
     "isbuffer": "^0.0.0",
     "nodemon": "^1.14.9",
     "path": "^0.12.7",
+    "sanitize-filename": "^1.6.3",
     "util": "^0.12.5",
     "Webpack": "npm:webpack@^5.88.1"
   },

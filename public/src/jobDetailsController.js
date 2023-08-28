@@ -1,10 +1,12 @@
 const path = require('path');
 const fs = require('fs');
+const sanitize = require('sanitize-filename');
 const getJobDetails = (req, res) => {
-    console << "System Request!"
-    const fileName = req.params.fileName;
+    console.log("File System Request!");
+    // sanitize input
+    const fileName = sanitize(req.params.fileName);
     let ip = req.connection.remoteAddress;
-    const filePath = path.join(__dirname, '..','assets', 'pdf_files', fileName);
+    const filePath = path.resolve(__dirname, '..', 'assets', 'pdf_files', fileName);
     fs.stat(filePath, function(err){
       if (err == null) {
         // Set the appropriate content type for PDF files

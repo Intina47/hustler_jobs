@@ -1,0 +1,36 @@
+project-folder/
+|-- node_modules
+|-- public/
+|   |-- index.html
+|   |-- assets/
+|       |-- jobs.json
+|       |-- pdf_files/
+|           |-- example1.pdf
+|           |-- example2.pdf
+|   |-- css/
+|   |   |-- search.css
+|   |   |-- styles.css
+|   |-- src/
+|      |-- api/
+|          |-- endpoint_getjobdetails.js
+|          |-- endpoint_getjobs.js
+|          |-- endpoint_search_ke.js
+|      |-- client-keJobsDisplay.js
+|      |-- conditional_jobsDisplay.js
+|      |-- darkMode.js
+|      |-- search_Ke.js
+|      |-- search_uk.js
+|-- routes/
+|   |-- jobDetails.js
+|   |-- jobs.js
+|   |-- searchKe.js
+|-- scrapper/
+|   |-- pdfScraper.py
+|   |-- ukJobs.py
+|-- server.js
+|-- package.json
+|-- package-lock.json
+|-- .gitignore
+
+
+|-- webpack.config.js

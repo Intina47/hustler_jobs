@@ -5,9 +5,12 @@ searchInput.addEventListener('input', function() {
   var searchQuery = searchInput.value;
   fetch(`/search?title=${encodeURIComponent(searchQuery)}`)
     .then(function(response) {
+      console.log('Response status:', response.status);
+      if (response.ok && response.headers['content-type'] === 'application/json')
       return response.json();
     })
     .then(function(searchResults) {
+      console.log('Search results:', searchResults);
       displaySearchResults(searchResults);
     });
 });

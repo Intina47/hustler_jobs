@@ -1,25 +1,29 @@
+var searchbtn = document.getElementById('searchbtn');
 
-const searchUKIcon = document.getElementById('search_icon_UK');
+searchbtn.addEventListener('click', function(event) {
+  console.log('Icon clicked');
+  // get the job title input element
+  const jobTitleInput = document.getElementById('searchUK');
+  // prevent automatic submision
+  event.preventDefault();
+  const jobTitle = jobTitleInput.value;
+  console.log('JOBTITTLE: ', jobTitle);
 
-searchUKIcon.addEventListener('click', function() {
-    console.log("icon clicked!");
-    // get the job title input element
-    const jobTitleInput = document.getElementById('searchUK');
-    // prevent automatic submission
-    event.preventDefault();
-    const jobTitle = jobTitleInput.ariaValueMax;
-    console.log("JOBTITTLE: ", jobTitle);
-
-    fetch(`/ukJobs?jobTitle=${encodeURIComponent(jobTitle)}`)
-    .then(function(response) {
-        return response.json();
-    })
-    .then(function(jobsData) {
-        displayJobs(jobsData);
-    })
-    .catch(function(error) {
-        console.log('Sorry an error occured\n', error);
-    });
+  fetch(`/ukJobs?jobTitle=${encodeURIComponent(jobTitle)}`)
+  .then(function(response) {
+    console.log('Respnse Status: ', response.status);
+    if(response.ok && response.headers.get('content-type').includes('application/json')) {
+      return response.json();
+    } else {
+      throw new Error('UK-Invalid response or content type is not JSON');
+    }
+  })
+  .then(function(searchResults) {
+    displaySearchResults(searchResults);
+  })
+  .catch(function(error) {
+    console.log('UK-Error: ', error.message);
+  });
 })
 
 function displayJobs(jobs) {

@@ -4,22 +4,27 @@ var searchInput = document.getElementById('searchKE');
 searchInput.addEventListener('input', function() {
   var searchQuery = searchInput.value;
   fetch(`/search?title=${encodeURIComponent(searchQuery)}`)
-    .then(function(response) {
-      console.log('Response status:', response.status);
-      if (response.ok && response.headers['content-type'] === 'application/json')
+  .then(function(response) {
+    console.log('Respnse Status: ', response.status);
+    if(response.ok && response.headers.get('content-type').includes('application/json')) {
       return response.json();
-    })
-    .then(function(searchResults) {
-      console.log('Search results:', searchResults);
-      displaySearchResults(searchResults);
-    });
-});
+    } else {
+      throw new Error('UK-Invalid response or content type is not JSON');
+    }
+  })
+  .then(function(searchResults) {
+    displaySearchResults(searchResults);
+  })
+  .catch(function(error) {
+    console.log('UK-Error: ', error.message);
+  });
+})
 
 function displaySearchResults(searchResults) {
   var searchResultsContainer = document.getElementById('jobListings');
   searchResultsContainer.innerHTML = '';
 
-  if (searchResults.length > 0) {
+  if (searchResults && searchResults.length > 0) {
     searchResults.forEach(function(job) {
       var jobListing = document.createElement('div');
       jobListing.className = 'job-listing';

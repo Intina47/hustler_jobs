@@ -21,7 +21,7 @@
     "express": "^4.18.2",
     "is-buffer": "^2.0.5",
     "isbuffer": "^0.0.0",
-    "nodemon": "^1.14.9",
+    "nodemon": "^3.0.1",
     "path": "^0.12.7",
     "util": "^0.12.5",
     "Webpack": "npm:webpack@^5.88.1"

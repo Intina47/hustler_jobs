@@ -1,5 +1,6 @@
 import sys
 import requests
+import json
 from bs4 import BeautifulSoup
 from urllib.parse import urlencode
 
@@ -38,6 +39,7 @@ def scrape_jobs(job_title, location):
                 "salary": salary,
                 "description": description
             })
+        # return data as json
         return job_data
     else:
         print("Failed to fetch data")
@@ -48,5 +50,6 @@ if len(sys.argv) == 3:
     job_title = sys.argv[1]
     location = sys.argv[2]
     jobs = scrape_jobs(job_title, location)
+    print(json.dumps(jobs))
 else:
     print("Please provide job title and location as arguments")

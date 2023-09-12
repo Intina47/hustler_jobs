@@ -4,10 +4,14 @@ document.addEventListener("DOMContentLoaded", function() {
     const ukJoblistingsDiv = document.getElementById("uk-jobListings");
     const companyElement = document.querySelector(".company-name");
     const searchInput = document.querySelector(".searchInput");
+    const kEJobSearch = document.querySelector(".kEJobSearch");
+    const ukJobSearch = document.querySelector(".ukJobSearch");
   
     // Show the Kenyan job listings by default
     searchInput.id = "searchKE";
     ukJoblistingsDiv.style.display = "none";
+    ukJobSearch.style.display = "none";
+    kEJobSearch.style.display = "flex";
     kenyanJoblistingsDiv.style.display = "block";
   
     const locationButtons = document.querySelectorAll(".location-tag");
@@ -28,14 +32,20 @@ document.addEventListener("DOMContentLoaded", function() {
           searchInput.id = "searchKE";
           ukJoblistingsDiv.style.display = "none";
           kenyanJoblistingsDiv.style.display = "block";
+          ukJobSearch.style.display = "none";
+          kEJobSearch.style.display = "flex";
         } else if (locationId === "44") {
           searchInput.id = "searchUK";
           ukJoblistingsDiv.style.display = "block";
           kenyanJoblistingsDiv.style.display = "none";
+          ukJobSearch.style.display = "flex";
+          kEJobSearch.style.display = "none";
         } else {
           searchInput.id = "searchKE";
           ukJoblistingsDiv.style.display = "none";
           kenyanJoblistingsDiv.style.display = "block";
+          ukJobSearch.style.display = "none";
+          kEJobSearch.style.display = "flex";
         }
       });
     });

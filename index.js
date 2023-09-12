@@ -18,7 +18,7 @@ app.use('/search', searchPdfRouter)
 
 app.get('/ukJobs', (req, res) => {
     const jobTitle = req.query.jobTitle;
-    const location = 'Edinburgh, Scotland';
+    const location = req.query.location;
     console.log("JOBTITTLE: ", jobTitle);
     console.log("LOCATION: ", location);
 

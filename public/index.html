@@ -21,8 +21,8 @@
               </a>
             </div>
           </div>
+
           <div class="header">
-            
             <div id="sticky-container" class="sticky">
               <div class="company-toggle-container">
                 <div class="company-name">Jobs in kenya</div>
@@ -33,13 +33,25 @@
                     <span class="toggle-icon" id="toggleIcon"><i class="fa-solid fa-moon"></i></span>
                   </label>
                 </div>
+                <!-- <div class="col-md-4">
+                  <div class="dropdown-btn">
+                    <i class="fa-solid fa-bars"></i>
+                  </div>
+                </div> -->
               </div>
             </div>
             
-          <div class="row">
+            <!-- conditionally display the search bar according to users choice -->
+          <div class="row kEJobSearch">
                 <input id="searchKE" class="searchInput" type="text" placeholder="Search" style="width: 100%; height: 30px; border-radius: 5px; border: 1px solid #ccc; padding: 5px 10px; margin-left: 10px; font-size: 20px;">
                 <i id="searchbtn" type="submit" class="search-icon fa-solid fa-search"></i>
           </div>
+
+          <div class="row ukJobSearch">
+            <input id="jobTitle" class="searchInput" type="text" placeholder="Job Title" style="width: 100%; height: 30px; border-radius: 5px; border: 1px solid #ccc; padding: 5px 10px; margin-left: 10px; font-size: 20px;">
+            <input id="location" class="searchInput" type="text" placeholder="Location" style="width: 100%; height: 30px; border-radius: 5px; border: 1px solid #ccc; padding: 5px 10px; margin-left: 10px; font-size: 20px;">
+            <button id="search-Uk-btn" type="submit">Search</button>
+        </div>
 
           <!-- location tags eg kenya, UK  rounded buttons-->
           <div class="row location_tags_section">
@@ -54,8 +66,14 @@
         <div id="jobListings"></div>
         <div id="uk-jobListings"></div>
     </div>
-    
+
+    <!-- <script>
+      document.querySelector('.dropdown-btn').addEventListener('click', function() {
+          document.querySelector('.header').classList.toggle('hide');
+      });
+      </script> -->
     <script src="/src/search_ke.js"></script>
+    <script src="/src/search_uk.js"></script>
     <script src="/src/client-keJobsDisplay.js"></script>
     <script src="/src/darkMode.js"></script>
     <script src="/src/conditional_jobsDisplay.js"></script>

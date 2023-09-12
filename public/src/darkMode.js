@@ -23,3 +23,25 @@ window.addEventListener('scroll', function() {
         stickyElement.classList.remove('sticky-background');
     }
 });
+
+let lastScrollTop = 0;
+let ticking = false;
+window.addEventListener("scroll", function() {
+    let lastScrollTop = window.pageYOffset || 
+    document.documentElement.scrollTop;
+    if (!ticking) {
+        this.window.requestAnimationFrame(function() {
+            doSomething(lastScrollTop);
+            ticking = false;
+        });
+        ticking = true;
+    }
+});
+
+function doSomething(scrollPos) {
+    if(scrollPos > lastScrollTop) {
+        document.querySelector('.header').classList.add('hide');
+    } else {
+        document.querySelector('.header').classList.remove('hide');
+    }
+}

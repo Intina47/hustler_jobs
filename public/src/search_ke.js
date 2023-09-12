@@ -1,4 +1,5 @@
 // kenyan jobs search 
+document.addEventListener("DOMContentLoaded", function() {
 var searchInput = document.getElementById('searchKE');
 
 searchInput.addEventListener('input', function() {
@@ -9,14 +10,14 @@ searchInput.addEventListener('input', function() {
     if(response.ok && response.headers.get('content-type').includes('application/json')) {
       return response.json();
     } else {
-      throw new Error('UK-Invalid response or content type is not JSON');
+      throw new Error('KE-Invalid response or content type is not JSON');
     }
   })
   .then(function(searchResults) {
     displaySearchResults(searchResults);
   })
   .catch(function(error) {
-    console.log('UK-Error: ', error.message);
+    console.log('KE-Error: ', error.message);
   });
 })
 
@@ -49,3 +50,4 @@ function displaySearchResults(searchResults) {
     searchResultsContainer.appendChild(noResultsMessage);
   }
 }
+});
